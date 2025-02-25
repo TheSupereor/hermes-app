@@ -5,6 +5,7 @@ import { WebhookModule } from './webhook/webhook.module';
 import { DatabaseModule } from './database/database.module';
 import { MessageBrokerModule } from './message-broker/message-broker.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { TelegramModule } from './telegram/telegram.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { MongooseModule } from '@nestjs/mongoose';
     DatabaseModule,
     WebhookModule,
     MessageBrokerModule,
+    TelegramModule,
   ],
   providers: [],
 })

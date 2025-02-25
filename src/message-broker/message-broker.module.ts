@@ -1,22 +1,14 @@
-import { Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 
+@Global()
 @Module({
-  imports: [
-    ClientsModule.register([
-      {
-        name: process.env.MESSAGE_BROKER_NAME!,
-        transport: Transport.RMQ,
-        options: {
-          urls: [process.env.RABBITMQ_URL!],
-          queue: 'formatted-messages',
-          queueOptions: {
-            durable: false,
-          },
-          exchange: ''
-        },
-      },
-    ]),
+  imports: [],
+  providers: [
+    MessageBrokerModule,
   ],
+  exports: [
+    MessageBrokerModule,
+  ]
 })
 export class MessageBrokerModule {}
