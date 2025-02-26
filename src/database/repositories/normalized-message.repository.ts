@@ -14,12 +14,14 @@ export class NormalizedMessageRepository {
   ) {}
 
   async saveNormalizedMessage(
+    uid: string,
     platform: string,
     from: string,
     message: string,
     timestamp: Date,
   ) {
     const normalizedMessage = new this.normalizedMessageModel({
+      uid,
       platform,
       from,
       message,

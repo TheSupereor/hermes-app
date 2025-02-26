@@ -19,10 +19,14 @@ export class WebhookService {
     rawPayload: TelegramMessageInterface,
   ) {
     // Salva a mensagem raw exatamente como chegou
-    this.telegramMessageRepo.saveTelegramMessage(platform, rawPayload);
+    this.telegramMessageRepo.saveTelegramMessage(
+      platform, 
+      rawPayload
+    );
 
     // Salva a mensagem normalizada
     this.normalizedMessageRepo.saveNormalizedMessage(
+      normalizedData.uid,
       platform,
       normalizedData.from,
       normalizedData.message,
@@ -31,8 +35,8 @@ export class WebhookService {
 
     // publicar mensagem
     const MBClient = this.messageBrokerSrvc.getClient();
-    return MBClient
-      .send({ cmd: 'processed_message' }, normalizedData) // Envia como GRC para receber resposta
-      .pipe(timeout(10000));                              // máximo de tempo para aguardar resposta do serviço de resposta
+    return MBClient.emit('processed_message', normalizedData)
+    // return MBClient.send({ cmd: 'processed_message' }, normalizedData) // Envia como GRC para receber resposta
+    //   .pipe(timeout(10000)); // máximo de tempo para aguardar resposta do serviço de resposta
   }
 }

@@ -5,14 +5,14 @@ export type NormalizedMessageDocument = NormalizedMessage & Document;
 
 @Schema({ timestamps: true })
 export class NormalizedMessage {
-  //@Prop({ required: true })
-  //name: string;
+  @Prop({ required: true })
+  uid: string;
 
   @Prop({ required: true })
-  platform: string; // Pode ser interessante guardar de qual plataforma veio
+  platform: string;           // Pode ser interessante guardar de qual plataforma veio
 
   @Prop({ required: true })
-  from: string;
+  from: string;               // username
 
   @Prop({ required: true })
   message: string;

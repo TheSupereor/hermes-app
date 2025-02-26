@@ -6,12 +6,11 @@ import { FacebookController } from './controllers/facebook.controller';
 import { DatabaseModule } from '../database/database.module'
 import { MessageBrokerModule } from 'src/message-broker/message-broker.module';
 import { TelegramService } from 'src/telegram/telegram.service';
+import { MessageBrokerService } from 'src/message-broker/message-broker.service';
 
 @Module({
   imports: [
     DatabaseModule,
-    MessageBrokerModule,
-    TelegramService
   ],
   controllers: [
     WhatsappController, 
@@ -19,7 +18,9 @@ import { TelegramService } from 'src/telegram/telegram.service';
     FacebookController
   ],
   providers: [
+    TelegramService,
     WebhookService,
+    MessageBrokerService
   ],
 })
 export class WebhookModule {}
