@@ -14,7 +14,7 @@ export class NormalizedMessageRepository {
   ) {}
 
   async saveNormalizedMessage(
-    uid: string,
+    uid: number,
     platform: string,
     from: string,
     message: string,

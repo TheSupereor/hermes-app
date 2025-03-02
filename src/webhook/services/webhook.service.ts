@@ -1,9 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { TelegramMessageRepository } from '../../database/repositories/telegram-message.repository';
 import { NormalizedMessageRepository } from '../../database/repositories/normalized-message.repository';
-import { TelegramMessage as TelegramMessageInterface } from 'interfaces/webhook';
+import { TelegramMessage as TelegramMessageInterface } from 'interfaces/telegram';
 import { MessageBrokerService } from 'src/message-broker/message-broker.service';
 import { timeout } from 'rxjs';
+import { NormalizedMessageInterface } from 'interfaces/webhook';
 
 @Injectable()
 export class WebhookService {
@@ -15,7 +16,7 @@ export class WebhookService {
 
   async handleMessage(
     platform: string,
-    normalizedData: any,
+    normalizedData: NormalizedMessageInterface,
     rawPayload: TelegramMessageInterface,
   ) {
     // Salva a mensagem raw exatamente como chegou
@@ -35,8 +36,8 @@ export class WebhookService {
 
     // publicar mensagem
     const MBClient = this.messageBrokerSrvc.getClient();
-    return MBClient.emit('processed_message', normalizedData)
-    // return MBClient.send({ cmd: 'processed_message' }, normalizedData) // Envia como GRC para receber resposta
-    //   .pipe(timeout(10000)); // máximo de tempo para aguardar resposta do serviço de resposta
+    //return MBClient.emit('processed_message', normalizedData)
+    return MBClient.send({ cmd: 'processed_message' }, normalizedData) // Envia como GRC para receber resposta
+     .pipe(timeout(30000)); // máximo de tempo para aguardar resposta do serviço de resposta
   }
 }

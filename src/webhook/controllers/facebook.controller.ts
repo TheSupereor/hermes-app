@@ -1,7 +1,7 @@
 // src/webhook/controllers/facebook.controller.ts
 import { Controller, Post, Body } from '@nestjs/common';
 import { WebhookService } from '../services/webhook.service';
-import { FacebookAdapter } from '../adapters/facebook.adapter';
+import { FacebookAdapter } from '../../commom/adapters/facebook.adapter';
 
 @Controller('webhook/facebook')
 export class FacebookController {

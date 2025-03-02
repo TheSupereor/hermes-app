@@ -6,7 +6,7 @@ export type NormalizedMessageDocument = NormalizedMessage & Document;
 @Schema({ timestamps: true })
 export class NormalizedMessage {
   @Prop({ required: true })
-  uid: string;
+  uid: number;
 
   @Prop({ required: true })
   platform: string;           // Pode ser interessante guardar de qual plataforma veio

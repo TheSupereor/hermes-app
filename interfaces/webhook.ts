@@ -1,36 +1,26 @@
-
-export interface NormalizedMessageInterface {
-    uid: string;
-    platform: string;
-    from: string;               // username
-    message: string;
-    timestamp: Date;
+interface NormalizedMessageInterface {
+  uid: number;
+  platform: string;
+  from: string; // username
+  message: string;
+  timestamp: Date | number;
 }
 
-export interface TelegramUser {
-    id: number;
-    is_bot: boolean;
-    first_name: string;
-    last_name: string;
-    language_code: string;
-  }
-  
-  export interface TelegramChat {
-    id: number;
-    first_name: string;
-    last_name: string;
-    type: string;
-  }
-  
-  export interface TelegramMessage {
-    message_id: number;
-    from: TelegramUser;
-    chat: TelegramChat;
-    date: number;
-    text: string;
-  }
-  
-  export interface TelegramUpdate {
-    update_id: number;
-    message: TelegramMessage;
-  }
+interface MBResponse {
+    pattern: {
+      cmd: string,
+    },
+    data: {
+        uid: number,
+        from: string,
+        message: string,
+        timestamp: number,
+    },
+    id: string
+}
+
+
+export {
+    NormalizedMessageInterface,
+    MBResponse,
+}

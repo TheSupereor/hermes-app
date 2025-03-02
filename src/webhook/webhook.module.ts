@@ -4,7 +4,6 @@ import { WhatsappController } from './controllers/whatsapp.controller';
 import { TelegramController } from './controllers/telegram.controller';
 import { FacebookController } from './controllers/facebook.controller';
 import { DatabaseModule } from '../database/database.module'
-import { MessageBrokerModule } from 'src/message-broker/message-broker.module';
 import { TelegramService } from 'src/telegram/telegram.service';
 import { MessageBrokerService } from 'src/message-broker/message-broker.service';
 

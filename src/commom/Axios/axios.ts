@@ -1,19 +1,16 @@
 import axios from 'axios';
 
-const TelegramBaseURL = `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}`;
 function getAxiosInstance() {
   return {
-    get(method: string, params: any) {
-      return axios.get(`/${method}`, {
-        baseURL: TelegramBaseURL,
+    get(endpoint: string, baseURL: string, params: any) {
+      return axios.get(`/${endpoint}`, {
+        baseURL,
         params,
       });
     },
-		post(method: string, data: any) {
-			return axios({
-				method: 'post',
-				baseURL: TelegramBaseURL,
-				url: `${method}`,
+		post(endpoint: string, baseURL: string, data: any) {
+			return axios.post(`${endpoint}`,{
+				baseURL,
 				data
 			});
 		}

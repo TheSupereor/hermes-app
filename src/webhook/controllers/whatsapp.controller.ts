@@ -1,7 +1,7 @@
 // src/webhook/controllers/whatsapp.controller.ts
 import { Controller, Post, Body } from '@nestjs/common';
 import { WebhookService } from '../services/webhook.service';
-import { WhatsappAdapter } from '../adapters/whatsapp.adapter';
+import { WhatsappAdapter } from '../../commom/adapters/whatsapp.adapter';
 
 @Controller('webhook/whatsapp')
 export class WhatsappController {
