@@ -6,6 +6,7 @@ import { FacebookController } from './controllers/facebook.controller';
 import { DatabaseModule } from '../database/database.module'
 import { TelegramService } from 'src/telegram/telegram.service';
 import { MessageBrokerService } from 'src/message-broker/message-broker.service';
+import { FacebookService } from 'src/facebook/facebook.service';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { MessageBrokerService } from 'src/message-broker/message-broker.service'
   ],
   providers: [
     TelegramService,
+    FacebookService,
     WebhookService,
     MessageBrokerService
   ],

@@ -19,6 +19,7 @@ export class NormalizedMessageRepository {
     from: string,
     message: string,
     timestamp: Date,
+    accountIdentifier: string
   ) {
     const normalizedMessage = new this.normalizedMessageModel({
       uid,
@@ -26,6 +27,7 @@ export class NormalizedMessageRepository {
       from,
       message,
       timestamp,
+      accountIdentifier
     });
     return await normalizedMessage.save();
   }

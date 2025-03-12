@@ -19,6 +19,9 @@ export class NormalizedMessage {
 
   @Prop({ required: true })
   timestamp: Date;
+
+  @Prop({ required: true })
+  accountIdentifier: string;   // identificador da conta recebedora
 }
 
 export const NormalizedMessageSchema = SchemaFactory.createForClass(NormalizedMessage);

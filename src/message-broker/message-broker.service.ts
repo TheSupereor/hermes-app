@@ -20,7 +20,7 @@ export class MessageBrokerService implements OnModuleInit {
         queueOptions: {
           durable: true,
 					// Expiração de mensagens e envio para fila especializada
-					messageTtl: 60000,
+					messageTtl: 30000,
 					deadLetterExchange: 'dead_letter_exchange',
 					deadLetterRoutingKey: 'dead_letter_key'
         },

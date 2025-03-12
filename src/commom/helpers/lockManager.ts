@@ -47,9 +47,9 @@ function lockFactory(store: any) {
         const release = lockedValues.get(value);
         release(); // Resolve a Promise pendente
         lockedValues.delete(value);
-        console.log(`Lock released para MESSAGEID ${value}`);
+        console.log(`Lock released para ID ${value}`);
       } else {
-        console.warn(`No lock found para MESSAGEID ${value} to release.`);
+        console.warn(`No lock found para ID ${value} to release.`);
       }
     },
   };

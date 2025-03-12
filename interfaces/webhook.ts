@@ -4,6 +4,7 @@ interface NormalizedMessageInterface {
   from: string; // username
   message: string;
   timestamp: Date | number;
+  accountIdentifier: string;
 }
 
 interface MBResponse {

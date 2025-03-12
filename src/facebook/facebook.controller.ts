@@ -1,18 +1,18 @@
 import { Body, Controller, Post } from "@nestjs/common";
-import { TelegramService } from "./telegram.service";
+import { FacebookService } from "./facebook.service";
 import { NormalizedMessageInterface } from "interfaces/webhook";
 
 // para ser utilizado caso uma mensagem precise ser enviada externamente
-@Controller('telegram/sendMessage')
-export class TelegramRoutes{
+@Controller('facebook/sendMessage')
+export class FacebookRoutes{
     constructor(
-        private readonly tlgSrvc: TelegramService
+        private readonly fbSrvc: FacebookService
     ){}
 
     @Post()
     async handleMessageSend(@Body() payload: NormalizedMessageInterface){
         // como não preciso de mais informações, não preciso fazer transformações
-        const resp = this.tlgSrvc.sendResponse(payload);
+        const resp = this.fbSrvc.sendResponse(payload);
         return resp;
     }
 }
