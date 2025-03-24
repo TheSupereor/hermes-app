@@ -20,7 +20,7 @@ export class FacebookAdapter {
     console.log(JSON.stringify(payload));
     const normalizedMessage = {
       uid: payload.entry[0].messaging[0].sender.id,
-      from: `----`, // obter nome de user
+      from: `----`, // obter nome de user com API
       message: payload.entry[0].messaging[0].message.text,
       timestamp: payload.entry[0].time,
       platform: 'facebook',
@@ -29,6 +29,7 @@ export class FacebookAdapter {
     return normalizedMessage;
   }
 
+  // ---------------- EM DESENVOLVIMENTO ------------------
   // transformando de mensagens para formato fb
   // para quando a IA puder responder com listas e botões
   toFacebookMessage(messages: any[] = []): Message[] {
